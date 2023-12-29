@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "447488340607",
+    "project_id": "najlepsza-vege-knajpa",
+    "storage_bucket": "najlepsza-vege-knajpa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447488340607:android:fbd1172e4115fe2593854a",
+        "android_client_info": {
+          "package_name": "com.aleksanderpawlowski.najlepsza_vege_knajpa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAPyBNBM2XUC8Yapziz9WbTIkBS9IrsJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
