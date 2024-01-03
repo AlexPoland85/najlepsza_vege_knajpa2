@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:najlepsza_vege_knajpa/app/features/login/cubit/login_cubit.dart';
+import 'package:najlepsza_vege_knajpa/app/cubit/root_cubit.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -44,8 +44,18 @@ class _LoginPageState extends State<LoginPage> {
               Text(errorMessage),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  context.read<LoginCubit>().login();
+                onPressed: () async {
+                  if (isCreatingAccount == true) {
+                    await context.read<RootCubit>().createAccount(
+                          email: widget.emailController.text,
+                          password: widget.paswordController.text,
+                        );
+                  } else {
+                    await context.read<RootCubit>().login(
+                          email: widget.emailController.text,
+                          password: widget.paswordController.text,
+                        );
+                  }
                 },
                 child: Text(isCreatingAccount == true
                     ? 'Zarejestruj się'
