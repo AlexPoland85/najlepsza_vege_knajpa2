@@ -9,8 +9,8 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit()
       : super(const LoginState(
           errorMessage: '',
-          isCreatingAccount: true,
-          login: false,
+          isCreatingAccount: false,
+          login: true,
           isLoading: false,
           email: '',
           password: '',
@@ -22,7 +22,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(
       const LoginState(
         errorMessage: '',
-        isCreatingAccount: true,
+        isCreatingAccount: false,
         login: false,
         isLoading: true,
         email: '',
@@ -46,11 +46,11 @@ class LoginCubit extends Cubit<LoginState> {
       emit(
         LoginState(
           errorMessage: 'Błąd Logowania: ${error.message}',
-          isCreatingAccount: state.isCreatingAccount,
+          isCreatingAccount: false,
           login: false,
           isLoading: false,
-          email: state.email,
-          password: state.password,
+          email: '',
+          password: '',
         ),
       );
     }
