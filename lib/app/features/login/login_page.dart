@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:najlepsza_vege_knajpa/app/cubit/root_cubit.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -45,30 +46,15 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: () async {
                   if (isCreatingAccount == true) {
-                    //rejestracja
-                    try {
-                      await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                        email: widget.emailController.text,
-                        password: widget.paswordController.text,
-                      );
-                    } catch (error) {
-                      setState(() {
-                        errorMessage = error.toString();
-                      });
-                    }
+                    await context.read<RootCubit>().createAccount(
+                          email: widget.emailController.text,
+                          password: widget.paswordController.text,
+                        );
                   } else {
-                    //logowanie
-                    try {
-                      await FirebaseAuth.instance.signInWithEmailAndPassword(
-                        email: widget.emailController.text,
-                        password: widget.paswordController.text,
-                      );
-                    } catch (error) {
-                      setState(() {
-                        errorMessage = error.toString();
-                      });
-                    }
+                    await context.read<RootCubit>().login(
+                          email: widget.emailController.text,
+                          password: widget.paswordController.text,
+                        );
                   }
                 },
                 child: Text(isCreatingAccount == true
